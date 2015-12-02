@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+{
+    NSArray *price_arr;
+    double proportion;
+}
 
 
 @end

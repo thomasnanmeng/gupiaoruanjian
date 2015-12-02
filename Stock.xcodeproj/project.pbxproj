@@ -14,6 +14,11 @@
 		4EF641D61C07F81B00B58908 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF641D51C07F81B00B58908 /* Images.xcassets */; };
 		4EF641D91C07F81B00B58908 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF641D71C07F81B00B58908 /* LaunchScreen.xib */; };
 		4EF641E51C07F81B00B58908 /* StockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641E41C07F81B00B58908 /* StockTests.m */; };
+		4EF641F01C07FA6200B58908 /* Chart.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641EF1C07FA6200B58908 /* Chart.m */; };
+		4EF641F31C0BE85100B58908 /* StockInfor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641F21C0BE85100B58908 /* StockInfor.m */; };
+		4EF641F61C0D392F00B58908 /* KLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641F51C0D392F00B58908 /* KLine.m */; };
+		4EF641F91C0D70AD00B58908 /* GetData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641F81C0D70AD00B58908 /* GetData.m */; };
+		4EF6422E1C0E933400B58908 /* BrokenLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6422D1C0E933400B58908 /* BrokenLine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,16 @@
 		4EF641DE1C07F81B00B58908 /* StockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF641E31C07F81B00B58908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF641E41C07F81B00B58908 /* StockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockTests.m; sourceTree = "<group>"; };
+		4EF641EE1C07FA6200B58908 /* Chart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chart.h; sourceTree = "<group>"; };
+		4EF641EF1C07FA6200B58908 /* Chart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chart.m; sourceTree = "<group>"; };
+		4EF641F11C0BE85100B58908 /* StockInfor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInfor.h; sourceTree = "<group>"; };
+		4EF641F21C0BE85100B58908 /* StockInfor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfor.m; sourceTree = "<group>"; };
+		4EF641F41C0D392F00B58908 /* KLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLine.h; sourceTree = "<group>"; };
+		4EF641F51C0D392F00B58908 /* KLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLine.m; sourceTree = "<group>"; };
+		4EF641F71C0D70AD00B58908 /* GetData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetData.h; sourceTree = "<group>"; };
+		4EF641F81C0D70AD00B58908 /* GetData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetData.m; sourceTree = "<group>"; };
+		4EF6422C1C0E933400B58908 /* BrokenLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrokenLine.h; sourceTree = "<group>"; };
+		4EF6422D1C0E933400B58908 /* BrokenLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrokenLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +104,16 @@
 				4EF641D51C07F81B00B58908 /* Images.xcassets */,
 				4EF641D71C07F81B00B58908 /* LaunchScreen.xib */,
 				4EF641C81C07F81B00B58908 /* Supporting Files */,
+				4EF641EE1C07FA6200B58908 /* Chart.h */,
+				4EF641EF1C07FA6200B58908 /* Chart.m */,
+				4EF641F11C0BE85100B58908 /* StockInfor.h */,
+				4EF641F21C0BE85100B58908 /* StockInfor.m */,
+				4EF641F41C0D392F00B58908 /* KLine.h */,
+				4EF641F51C0D392F00B58908 /* KLine.m */,
+				4EF641F71C0D70AD00B58908 /* GetData.h */,
+				4EF641F81C0D70AD00B58908 /* GetData.m */,
+				4EF6422C1C0E933400B58908 /* BrokenLine.h */,
+				4EF6422D1C0E933400B58908 /* BrokenLine.m */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -219,7 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF6422E1C0E933400B58908 /* BrokenLine.m in Sources */,
+				4EF641F91C0D70AD00B58908 /* GetData.m in Sources */,
+				4EF641F31C0BE85100B58908 /* StockInfor.m in Sources */,
+				4EF641F01C07FA6200B58908 /* Chart.m in Sources */,
 				4EF641D11C07F81B00B58908 /* ViewController.m in Sources */,
+				4EF641F61C0D392F00B58908 /* KLine.m in Sources */,
 				4EF641CE1C07F81B00B58908 /* AppDelegate.m in Sources */,
 				4EF641CB1C07F81B00B58908 /* main.m in Sources */,
 			);
