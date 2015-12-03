@@ -16,7 +16,7 @@
     double m_margin_left;
     double m_margin_y;
 }
--(UIImage *)drawRect :(double)chart_height;
+-(id)initWithFrame:(CGRect)frame :(double)chart_height;
 
 
 @end

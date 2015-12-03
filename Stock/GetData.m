@@ -19,10 +19,11 @@
     }
     return self;
 }
--(NSDictionary *)get_miniute_data :(double)chart_height
+-(NSDictionary *)get_miniute_data :(double)chart_height :(NSString *)stock_code
 {
 //    NSError *error;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://data.gtimg.cn/flashdata/hushen/minute/sh600600.js?maxage=10"]];
+    NSString *url = [NSString stringWithFormat:@"http://data.gtimg.cn/flashdata/hushen/minute/%@.js?maxage=10",stock_code];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSData *respose = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *miniute_data = [[NSString alloc]initWithData:respose encoding:NSUTF8StringEncoding];
     NSArray *mimiute = [miniute_data componentsSeparatedByString:@"\\n\\"];

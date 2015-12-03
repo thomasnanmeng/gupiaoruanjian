@@ -41,11 +41,6 @@
     UIGraphicsEndImageContext();
     return  kline_image;
 }
-//-(void)get_data
-//{
-// 
-//    GetData *get_data = [[GetData alloc]init];
-//    
-//    proportion = [[[get_data get_miniute_data]objectForKey:@"比例"]doubleValue];
+
 //}
 @end

@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *price_arr;
     double proportion;
+    UITableView *myTbaleView;
+    NSMutableArray *m_arr_all_stock_codes;
+    NSString *stock_code;
 }
 
 

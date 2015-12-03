@@ -18,9 +18,9 @@
         m_margin_y = 30;
         minute = (self.frame.size.width-m_margin_left*2)/240;
         
-        UIImage *image = [self draw_broken_line:unit_prices :prop];
-        UIImageView *imageview = [[UIImageView alloc]initWithImage:image];
-        [self addSubview:imageview];
+        UIImage *broken_image = [self draw_broken_line:unit_prices :prop];
+        UIImageView *briken_imageview = [[UIImageView alloc]initWithImage:broken_image];
+        [self addSubview:briken_imageview];
         self.backgroundColor = [UIColor clearColor];
     }
     return self;

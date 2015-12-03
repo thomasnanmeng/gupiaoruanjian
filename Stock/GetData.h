@@ -13,7 +13,6 @@
 {
     NSMutableArray *price;
     double proportion;
-  
 }
--(NSDictionary *)get_miniute_data :(double)chart_height;
+-(NSDictionary *)get_miniute_data :(double)chart_height :(NSString *)stock_code;
 @end

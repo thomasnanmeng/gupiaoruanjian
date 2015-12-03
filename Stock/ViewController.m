@@ -12,6 +12,7 @@
 #import "KLine.h"
 #import "BrokenLine.h"
 #import "GetData.h"
+#import "ImageViewController.h"
 @interface ViewController ()
 
 @end
@@ -22,37 +23,88 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
-
-    StockInfor *stock = [[StockInfor alloc]initWithFrame:self.view.frame];
-    UIImage *chart_image = [stock drawRect :200];
-    stock.backgroundColor = [UIColor whiteColor];
-    UIImageView *imageChart = [[UIImageView alloc]initWithImage:chart_image];
-    [self.view addSubview:imageChart];
-    KLine *kline = [[KLine alloc]initWithFrame:self.view.frame];
-    UIImage *kline_image = [kline drawRect:100 :200 :50 :250];
-    kline.backgroundColor = [UIColor clearColor];
-    UIImageView *imageKline = [[UIImageView alloc]initWithImage:kline_image];
-    [self.view addSubview:imageKline];
-    //表格的imageview
+    myTbaleView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
+    myTbaleView.dataSource = self;
+    myTbaleView.delegate = self;
+    [self.view addSubview:myTbaleView];
     
-    GetData *data = [[GetData alloc]init];
-    NSDictionary *dataSource = [data get_miniute_data:200];
-    price_arr = [dataSource objectForKey:@"价格数组"];
-    proportion = [[dataSource objectForKey:@"比例"]doubleValue];
-    //调用GetData里需要的数据
-    
-    BrokenLine *brokenLine = [[BrokenLine alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-230, self.view.frame.size.width, 230) :price_arr :proportion];
-//    UIImage *brokenline_image = [brokenLine draw_broken_line:test :proportion];
-//    brokenLine.backgroundColor = [UIColor clearColor];
-//    UIImageView *imageBroken = [[UIImageView alloc]initWithImage:brokenline_image];
-//    imageBroken.frame = CGRectMake(0, self.view.frame.size.height-230, self.view.frame.size.width, 230);
-    [self.view addSubview:brokenLine];
-    
-    
-    
-
+    [self data_json];
+   
 }
 
+
+
+
+
+-(void)data_json
+{
+    m_arr_all_stock_codes = [[NSMutableArray alloc]initWithCapacity:0];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://smartbox.gtimg.cn/s3/?q=600&t=all"]];
+    NSData *respose = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *getData = [[NSString alloc]initWithData:respose encoding:NSUTF8StringEncoding];
+    NSArray *data_array = [getData componentsSeparatedByString:@"^"];
+    for (int i = 0; i < data_array.count; i ++)
+    {
+        NSArray *item_tmp = [[data_array objectAtIndex:i] componentsSeparatedByString:@"~"];
+        NSString *str_sh = [item_tmp objectAtIndex:0];
+        NSString *str_value = [NSString stringWithFormat:@"%@%@   %@",[str_sh substringFromIndex:str_sh.length-2],[item_tmp objectAtIndex:1],[item_tmp objectAtIndex:2]];
+       [m_arr_all_stock_codes addObject:[self replaceUnicode:str_value]];
+    }
+
+}
+- (NSString*) replaceUnicode:(NSString*)aUnicodeString
+
+{
+    
+    NSString *tempStr1 = [aUnicodeString stringByReplacingOccurrencesOfString:@"\\u" withString:@"\\U"];
+    
+    NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    
+    NSString *tempStr3 = [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
+    
+    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
+                           
+                                                           mutabilityOption:NSPropertyListImmutable
+                           
+                                                                     format:NULL
+                           
+                                                           errorDescription:NULL];
+    
+    
+    
+    return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n" withString:@"\n"];
+    
+}//unicode转化成utf8
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return m_arr_all_stock_codes.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.textLabel.text = [m_arr_all_stock_codes objectAtIndex:indexPath.row];
+    return cell;
+    
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *code_array = [[m_arr_all_stock_codes objectAtIndex:[indexPath row]]componentsSeparatedByString:@"   "];
+    NSString *code = [code_array objectAtIndex:0];
+    
+    ImageViewController *stock_image = [[ImageViewController alloc]initWithCode:code];
+    [self.navigationController pushViewController:stock_image  animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,7 +9,7 @@
 #import "StockInfor.h"
 
 @implementation StockInfor
--(id)initWithFrame:(CGRect)frame
+-(id)initWithFrame:(CGRect)frame :(double) chart_height
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -18,10 +18,13 @@
         m_row = 4;
         m_column = 3;
         m_margin_y = 30;
+        UIImage *chart_image = [self draw_chart:chart_height];
+        UIImageView *chart_imageview = [[UIImageView alloc]initWithImage:chart_image];
+        [self addSubview:chart_imageview];
     }
     return self;
 }
--(UIImage *)drawRect :(double)chart_height
+-(UIImage *)draw_chart :(double) chart_height
 {
     UIGraphicsBeginImageContext(self.frame.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
