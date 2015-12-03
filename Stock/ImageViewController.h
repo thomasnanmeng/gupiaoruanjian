@@ -13,6 +13,11 @@
     NSArray *price_arr;
     double proportion;
     NSString *stock_code;
+    NSArray *begin;
+    NSArray *end;
+    NSArray *highest;
+    NSArray *lowest;
+    UIToolbar *toolbar;
 }
 - (id) initWithCode :(NSString *)code;
 @end

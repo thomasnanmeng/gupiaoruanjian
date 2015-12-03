@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 李旗. All rights reserved.
 //
 
-#import "StockInfor.h"
+#import "DrawChart.h"
 
-@implementation StockInfor
+@implementation DrawChart
 -(id)initWithFrame:(CGRect)frame :(double) chart_height
 {
     self = [super initWithFrame:frame];
@@ -28,7 +28,7 @@
 {
     UIGraphicsBeginImageContext(self.frame.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);//线条颜色
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);//线条颜色
     CGContextSetLineWidth(context, 1.0);//线条宽度
     CGContextAddRect(context, CGRectMake(m_margin_left, self.frame.size.height-m_margin_y-chart_height, self.frame.size.width-m_margin_left*2, chart_height));
     

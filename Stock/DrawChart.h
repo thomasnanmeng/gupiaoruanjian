@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StockInfor : UIView
+@interface DrawChart : UIView
 {
     
     int m_row;

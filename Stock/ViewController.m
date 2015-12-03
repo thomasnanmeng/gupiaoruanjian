@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 #import "Chart.h"
-#import "StockInfor.h"
-#import "KLine.h"
+#import "DrawChart.h"
+#import "AllKLine.h"
 #import "BrokenLine.h"
 #import "GetData.h"
 #import "ImageViewController.h"
@@ -48,7 +48,11 @@
         NSArray *item_tmp = [[data_array objectAtIndex:i] componentsSeparatedByString:@"~"];
         NSString *str_sh = [item_tmp objectAtIndex:0];
         NSString *str_value = [NSString stringWithFormat:@"%@%@   %@",[str_sh substringFromIndex:str_sh.length-2],[item_tmp objectAtIndex:1],[item_tmp objectAtIndex:2]];
-       [m_arr_all_stock_codes addObject:[self replaceUnicode:str_value]];
+        if ([[str_sh substringFromIndex:str_sh.length-2]isEqualToString:@"sh"]||[[str_sh substringFromIndex:str_sh.length-2]isEqualToString:@"sz"])
+        {
+            [m_arr_all_stock_codes addObject:[self replaceUnicode:str_value]];
+        }
+       
     }
 
 }

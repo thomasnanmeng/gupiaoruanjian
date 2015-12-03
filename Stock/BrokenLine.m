@@ -30,7 +30,7 @@
 {
     UIGraphicsBeginImageContext(self.frame.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);//线条颜色
+    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);//线条颜色
     CGContextSetLineWidth(context, 1.0);//线条宽度
     
     CGContextMoveToPoint(context, m_margin_left,(230-m_margin_y)/2);//开始画线, x，y 为开始点的坐标
