@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "Chart.h"
 #import "DrawChart.h"
 #import "AllKLine.h"
 #import "BrokenLine.h"

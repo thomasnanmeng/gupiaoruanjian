@@ -55,7 +55,7 @@
         proportion = (first_price - min)/(chart_height/2);
     }
     
-    NSDictionary *data_source = [[NSDictionary alloc]initWithObjectsAndKeys:price,@"价格数组",[NSNumber numberWithDouble:proportion],@"比例", nil];
+    NSDictionary *data_source = [[NSDictionary alloc]initWithObjectsAndKeys:price,@"价格数组",[NSNumber numberWithDouble:proportion],@"比例",[NSString stringWithFormat :@"%.2f",max],@"最高",[NSString stringWithFormat :@"%.2f",min],@"最低" ,nil];
 
     return  data_source;
     

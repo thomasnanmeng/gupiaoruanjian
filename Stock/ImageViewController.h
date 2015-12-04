@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DrawChart.h"
+#import "AllKLine.h"
+#import "GetData.h"
+#import "BrokenLine.h"
+#import "GetKLineData.h"
 
 @interface ImageViewController : UIViewController
 {
@@ -18,6 +23,18 @@
     NSArray *highest;
     NSArray *lowest;
     UIToolbar *toolbar;
+    UIButton *btn_minute;
+    UIButton *btn_daily;
+    UIButton *btn_week;
+    UIButton *btn_month;
+    AllKLine *kline;
+    BrokenLine *brokenLine;
+    NSString *button_choose;
+    NSString *today_begin;
+    NSString *today_now;
+    NSString *yesterday;
+    NSString *label_highest;
+    NSString *label_lowest;
 }
 - (id) initWithCode :(NSString *)code;
 @end

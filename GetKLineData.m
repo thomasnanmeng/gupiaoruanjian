@@ -10,9 +10,9 @@
 
 @implementation GetKLineData
 
--(NSDictionary *)get_kline_data :(NSString *)stock_code :(double)chart_height
+-(NSDictionary *)get_kline_data :(NSString *)button_choose :(NSString *)stock_code :(double)chart_height
 {
-    NSString *url = [NSString stringWithFormat:@"http://data.gtimg.cn/flashdata/hushen/latest/daily/%@.js?maxage=43201",stock_code];
+    NSString *url = [NSString stringWithFormat:@"http://data.gtimg.cn/flashdata/hushen/latest/%@/%@.js?maxage=43201",button_choose,stock_code];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSData *respose = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *kline_data = [[NSString alloc]initWithData:respose encoding:NSUTF8StringEncoding];

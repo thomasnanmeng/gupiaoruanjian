@@ -16,5 +16,5 @@
     NSMutableArray *kline_lowest;
 }
 
--(NSDictionary *)get_kline_data :(NSString *)stock_code :(double)chart_height;
+-(NSDictionary *)get_kline_data :(NSString *)button_choose :(NSString *)stock_code :(double)chart_height;
 @end
