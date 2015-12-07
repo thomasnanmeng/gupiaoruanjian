@@ -21,7 +21,6 @@
 }
 -(NSDictionary *)get_miniute_data :(double)chart_height :(NSString *)stock_code
 {
-//    NSError *error;
     NSString *url = [NSString stringWithFormat:@"http://data.gtimg.cn/flashdata/hushen/minute/%@.js?maxage=10",stock_code];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSData *respose = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
@@ -41,7 +40,6 @@
         //把获取的数据的每个元素按空格分成三个元素
         [price addObject:[miniute_price objectAtIndex:1]];
         //取第二个元素放在一个可变数组里，就得到了需要的价格
-        
     }
     double max = [[price valueForKeyPath:@"@max.doubleValue"] doubleValue];
     double min = [[price valueForKeyPath:@"@min.doubleValue"] doubleValue];
@@ -54,11 +52,8 @@
     {
         proportion = (first_price - min)/(chart_height/2);
     }
-    
     NSDictionary *data_source = [[NSDictionary alloc]initWithObjectsAndKeys:price,@"价格数组",[NSNumber numberWithDouble:proportion],@"比例",[NSString stringWithFormat :@"%.2f",max],@"最高",[NSString stringWithFormat :@"%.2f",min],@"最低" ,nil];
-
     return  data_source;
-    
 }
 
 

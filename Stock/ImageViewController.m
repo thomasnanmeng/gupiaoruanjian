@@ -114,7 +114,7 @@
     [self creat_label_with_title:label_highest :CGRectMake(71,240,60,40)];
     [self creat_label_with_title:label_lowest :CGRectMake(171,240,60,40)];
     [self creat_label_with_title:@"" :CGRectMake(301,240,100,40)];
-   UILabel *label_now =  [self creat_label_with_title:today_now :CGRectMake(20,100,110,110)];
+    UILabel *label_now =  [self creat_label_with_title:today_now :CGRectMake(20,100,110,110)];
     label_now.font = [UIFont boldSystemFontOfSize:40];
     label_now.textColor = [UIColor greenColor];
 }

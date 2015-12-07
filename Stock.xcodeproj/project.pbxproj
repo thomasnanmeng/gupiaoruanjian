@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E8861051C0FE2FF009E15A0 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8861041C0FE2FF009E15A0 /* ImageViewController.m */; };
 		4E88610C1C10103C009E15A0 /* GetKLineData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E88610B1C10103C009E15A0 /* GetKLineData.m */; };
+		4E991B7B1C15596E00144C62 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E991B7A1C15596E00144C62 /* TableViewController.m */; };
 		4EF641CB1C07F81B00B58908 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641CA1C07F81B00B58908 /* main.m */; };
 		4EF641CE1C07F81B00B58908 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641CD1C07F81B00B58908 /* AppDelegate.m */; };
 		4EF641D11C07F81B00B58908 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF641D01C07F81B00B58908 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 		4E8861041C0FE2FF009E15A0 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		4E88610A1C10103C009E15A0 /* GetKLineData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetKLineData.h; sourceTree = "<group>"; };
 		4E88610B1C10103C009E15A0 /* GetKLineData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetKLineData.m; sourceTree = "<group>"; };
+		4E991B791C15596E00144C62 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		4E991B7A1C15596E00144C62 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		4EF641C51C07F81B00B58908 /* Stock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF641C91C07F81B00B58908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF641CA1C07F81B00B58908 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 				4EF641C81C07F81B00B58908 /* Supporting Files */,
 				4E8861031C0FE2FF009E15A0 /* ImageViewController.h */,
 				4E8861041C0FE2FF009E15A0 /* ImageViewController.m */,
+				4E991B791C15596E00144C62 /* TableViewController.h */,
+				4E991B7A1C15596E00144C62 /* TableViewController.m */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				4E88610C1C10103C009E15A0 /* GetKLineData.m in Sources */,
 				4EF6422E1C0E933400B58908 /* BrokenLine.m in Sources */,
 				4EF641F91C0D70AD00B58908 /* GetData.m in Sources */,
+				4E991B7B1C15596E00144C62 /* TableViewController.m in Sources */,
 				4EF641F31C0BE85100B58908 /* DrawChart.m in Sources */,
 				4EF641D11C07F81B00B58908 /* ViewController.m in Sources */,
 				4EF641F61C0D392F00B58908 /* AllKLine.m in Sources */,
