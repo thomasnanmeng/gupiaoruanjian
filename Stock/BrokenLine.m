@@ -14,7 +14,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        m_margin_left = 20;
+        m_margin_left = 2;
         m_margin_y = 30;
         minute = (self.frame.size.width-m_margin_left*2)/240;
         
@@ -30,17 +30,13 @@
 {
     UIGraphicsBeginImageContext(self.frame.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);//线条颜色
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);//线条颜色
     CGContextSetLineWidth(context, 1.0);//线条宽度
-    
     CGContextMoveToPoint(context, m_margin_left,(230-m_margin_y)/2);//开始画线, x，y 为开始点的坐标
     for (int i = 1; i < unit_price.count ; i++)
     {
       double difference =  [[unit_price objectAtIndex:i]doubleValue]-[[unit_price objectAtIndex:0]doubleValue];
-        
-        double price_y_end = (230
-                              - m_margin_y )/2 - difference/prop;
-     
+        double price_y_end = (230 - m_margin_y )/2 - difference/prop;
         price_x_end = m_margin_left+ i *minute;//x轴结束的坐标
         CGContextAddLineToPoint(context, price_x_end,price_y_end );//画直线, x，y 为线条结束点的坐标
     }
@@ -48,7 +44,6 @@
     UIImage *broken_image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return  broken_image;
-    
 }
 
 @end

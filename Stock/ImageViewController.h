@@ -18,6 +18,7 @@
     NSArray *price_arr;
     double proportion;
     NSString *stock_code;
+    NSString *stock_name;
     NSArray *begin;
     NSArray *end;
     NSArray *highest;
@@ -36,5 +37,5 @@
     NSString *label_highest;
     NSString *label_lowest;
 }
-- (id) initWithCode :(NSString *)code;
+- (id) initWithCode :(NSString *)code :(NSString *)name;
 @end

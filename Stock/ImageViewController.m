@@ -13,15 +13,18 @@
 #import "GetData.h"
 #import "BrokenLine.h"
 #import "GetKLineData.h"
+#import "LabelData.h"
+#import <ShareSDK/ShareSDK.h>
 
 
 @implementation ImageViewController
-- (id) initWithCode :(NSString *)code
+- (id) initWithCode :(NSString *)code :(NSString *)name
 {
     self = [super init];
     if (self)
     {
         stock_code = code;
+        stock_name = name;
 
     }
     return self;
@@ -38,9 +41,13 @@
     today_begin = [price_arr objectAtIndex:0];
     today_now = [price_arr lastObject];
     [self creat_label];
+    UILabel *stockName = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    NSString *stock_number = [stock_code substringFromIndex:2];
+    self.navigationItem.titleView = stockName;
+    stockName.text = [NSString stringWithFormat:@"%@(%@)",stock_name,stock_number];
+    stockName.textAlignment = NSTextAlignmentCenter;
+    stockName.textColor = [UIColor whiteColor];
     
-    
-
 }
 -(void)draw_chart  //画表格
 {
@@ -90,33 +97,10 @@
 
     
 }
-
--(UILabel *)creat_label_with_title :(NSString *)title :(CGRect)frame//创建label的方法
+-(void)creat_label  //创建label
 {
-    UILabel *label_with_title = [[UILabel alloc]initWithFrame:frame];
-    label_with_title.text = title;
-    label_with_title.textColor = [UIColor whiteColor];
-    label_with_title.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:label_with_title];
-    return label_with_title;
-}
--(void)creat_label   //创建label
-{
-    [self creat_label_with_title:@"今开" :CGRectMake(150,70,40,40)];
-    [self creat_label_with_title:@"昨收" :CGRectMake(270,70,40,40)];
-    [self creat_label_with_title:@"成交额" :CGRectMake(150,152,70,40)];
-    [self creat_label_with_title:@"最高" :CGRectMake(30,240,40,40)];
-    [self creat_label_with_title:@"最低" :CGRectMake(130,240,40,40)];
-    [self creat_label_with_title:@"成交量" :CGRectMake(240,240,60,40)];
-    [self creat_label_with_title:today_begin :CGRectMake(150,111,60,40)];
-    [self creat_label_with_title:yesterday :CGRectMake(270,111,60,40)];
-    [self creat_label_with_title:@"" :CGRectMake(150,193,100,40)];
-    [self creat_label_with_title:label_highest :CGRectMake(71,240,60,40)];
-    [self creat_label_with_title:label_lowest :CGRectMake(171,240,60,40)];
-    [self creat_label_with_title:@"" :CGRectMake(301,240,100,40)];
-    UILabel *label_now =  [self creat_label_with_title:today_now :CGRectMake(20,100,110,110)];
-    label_now.font = [UIFont boldSystemFontOfSize:40];
-    label_now.textColor = [UIColor greenColor];
+    LabelData *creat_label = [[LabelData alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-400)  :today_begin :yesterday :label_highest :label_lowest :today_now];
+    [self.view addSubview:creat_label];
 }
 -(UIToolbar *)toolbar_with_button  //创建toolbar
 {
@@ -131,11 +115,11 @@
 -(UIButton *)creat_toolbar_button:(NSString *)title :(CGRect)frame :(SEL)buttonPressed :(id)target  //toolbar的button的方法
 {
     UIButton *button = [[UIButton alloc]initWithFrame:frame];
-    button.backgroundColor = [UIColor blackColor];
+//    button.backgroundColor = [UIColor blackColor];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    button.layer.borderColor = [UIColor blueColor].CGColor;
-    button.layer.borderWidth = 1;
+//    button.layer.borderColor = [UIColor blueColor].CGColor;
+    button.layer.borderWidth = 0;
     [button addTarget:target action:buttonPressed forControlEvents:UIControlEventTouchUpInside];
     [toolbar addSubview:button];
     return button;
@@ -144,8 +128,8 @@
 -(void)button_pressed_minute     //分线按钮
 {
     [self draw_broken_line];
-    btn_minute.backgroundColor = [UIColor blueColor];
-    [btn_minute setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    btn_minute.backgroundColor = [UIColor blueColor];
+    [btn_minute setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [kline removeFromSuperview];
     [self button_color:btn_daily :btn_week :btn_month];
     
@@ -155,8 +139,8 @@
     button_choose = @"daily";//网址先更改
     [kline removeFromSuperview];
     [self draw_kline];
-    btn_daily.backgroundColor = [UIColor blueColor];
-    [btn_daily setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    btn_daily.backgroundColor = [UIColor blueColor];
+    [btn_daily setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [brokenLine removeFromSuperview];//加载k线需要吧折线图移除
     [self button_color:btn_minute :btn_week :btn_month];
     
@@ -166,8 +150,8 @@
      button_choose = @"weekly";
     [kline removeFromSuperview];
     [self draw_kline];
-    btn_week.backgroundColor = [UIColor blueColor];
-    [btn_week setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    btn_week.backgroundColor = [UIColor blueColor];
+    [btn_week setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self button_color:btn_minute :btn_daily :btn_month];
     [brokenLine removeFromSuperview];
 }
@@ -176,8 +160,8 @@
     button_choose = @"monthly";
     [kline removeFromSuperview];
     [self draw_kline];
-    btn_month.backgroundColor = [UIColor blueColor];
-    [btn_month setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    btn_month.backgroundColor = [UIColor blueColor];
+    [btn_month setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self button_color:btn_daily :btn_week :btn_minute];
     [brokenLine removeFromSuperview];
 }
@@ -190,5 +174,16 @@
     [button_b setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button_c setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }//点击按钮后其他按钮的颜色
+
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+
+
 
 @end

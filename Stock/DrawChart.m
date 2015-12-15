@@ -14,7 +14,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        m_margin_left = 20;
+        m_margin_left = 2;
         m_row = 4;
         m_column = 3;
         m_margin_y = 30;
@@ -29,7 +29,7 @@
     UIGraphicsBeginImageContext(self.frame.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);//线条颜色
-    CGContextSetLineWidth(context, 1.0);//线条宽度
+    CGContextSetLineWidth(context, 0.3);//线条宽度
     CGContextAddRect(context, CGRectMake(m_margin_left, self.frame.size.height-m_margin_y-chart_height, self.frame.size.width-m_margin_left*2, chart_height));
     
     CGContextMoveToPoint(context, m_margin_left,self.frame.size.height-m_margin_y-chart_height/m_row);//开始画线, x，y 为开始点的坐标

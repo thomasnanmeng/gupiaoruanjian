@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TableViewController : UITableViewController
+<NSURLConnectionDelegate>
 {
     NSArray *price_arr;
     double proportion;
@@ -18,6 +19,8 @@
     UIRefreshControl *refresh;
     UISearchController *searchController;
     NSMutableArray *filtered;
+    NSString *getData;
 }
+@property(nonatomic,strong)NSMutableData *receiveData;
 
 @end

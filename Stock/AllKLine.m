@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        m_margin_left= 20;
+        m_margin_left= 2;
         UIImage *kline_image = [self draw_kline:begin :end :highest :lowest :chart_height :line_with_cu :line_with_xi :spacing];
         self.backgroundColor = [UIColor clearColor];
         UIImageView *imageKline = [[UIImageView alloc]initWithImage:kline_image];
